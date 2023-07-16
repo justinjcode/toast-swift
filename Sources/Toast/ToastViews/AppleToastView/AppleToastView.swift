@@ -63,6 +63,21 @@ public class AppleToastView : UIView, ToastView {
         }
     }
     
+    public func makeConstraintsForSwiftUI() {
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        self.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        self.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        NSLayoutConstraint.activate([
+            heightAnchor.constraint(greaterThanOrEqualToConstant: minHeight),
+            widthAnchor.constraint(greaterThanOrEqualToConstant: minWidth),
+        ])
+        addSubviewConstraints()
+        DispatchQueue.main.async {
+            self.style()
+        }
+    }
+    
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         UIView.animate(withDuration: 0.5) {
             self.style()
@@ -86,10 +101,12 @@ public class AppleToastView : UIView, ToastView {
     private func addSubviewConstraints() {
         child.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            child.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            child.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
-            child.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
-            child.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25)
+            child.topAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: 10),
+            child.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -10),
+            child.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 25),
+            child.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -25),
+            child.centerXAnchor.constraint(equalTo: centerXAnchor),
+            child.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
     

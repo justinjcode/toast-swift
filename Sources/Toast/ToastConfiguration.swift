@@ -30,7 +30,7 @@ public struct ToastConfiguration {
     ///   - exitingAnimation: The exiting animation of the toast.
     ///   - attachTo: The view on which the toast view will be attached.
     public init(
-        direction: Toast.Direction = .top,
+        direction: Toast.Direction = .bottom,
         autoHide: Bool = true,
         enablePanToClose: Bool = true,
         displayTime: TimeInterval = 4,

@@ -56,5 +56,10 @@ public class TextToastView : UIStackView {
         axis = .vertical
         alignment = .center
         distribution = .fillEqually
+//        backgroundColor = .red
+    }
+    
+    public override var intrinsicContentSize: CGSize {
+        return CGSize(width: 100, height: 30)
     }
 }
