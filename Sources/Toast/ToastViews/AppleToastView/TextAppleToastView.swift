@@ -59,6 +59,11 @@ public class TextToastView : UIStackView {
 //        backgroundColor = .red
     }
     
+    func updateTitle(title: String, subTitle: String?) {
+        self.titleLabel.text = title
+        self.subtitleLabel.text = subTitle
+    }
+    
     public override var intrinsicContentSize: CGSize {
         return CGSize(width: 100, height: 30)
     }

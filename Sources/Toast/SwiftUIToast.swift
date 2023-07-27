@@ -26,6 +26,7 @@ struct JCToast: UIViewRepresentable {
     
     func updateUIView(_ uiView: UIViewType, context: Context) {
         print("\(#function) show: \(show)")
+        uiView.updateTitle(title: title, subTitle: subTitle)
         uiView.isHidden = !show
     }
     
@@ -53,10 +54,9 @@ struct JCToast_Previews: PreviewProvider {
 }
 
 @available(iOS 16.0, *)
-extension View {
+public extension View {
     
     func jcToast(isPresented: Binding<Bool>, title: String, subTitle: String? = nil) -> some View {
-        
         self.overlay {
             JCToast(show: isPresented, title: title, subTitle: subTitle)
         }

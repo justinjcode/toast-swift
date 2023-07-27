@@ -121,4 +121,10 @@ public class AppleToastView : UIView, ToastView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func updateTitle(title: String, subTitle: String?) {
+        if let toastView = self.child as? TextToastView {
+            toastView.updateTitle(title: title, subTitle: subTitle)
+        }
+    }
 }
