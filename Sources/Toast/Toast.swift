@@ -171,7 +171,8 @@ public class Toast {
     /// Show the toast
     /// - Parameter delay: Time after which the toast is shown
     public func show(after delay: TimeInterval = 0) {
-        config.view?.addSubview(view) ?? topController()?.view.addSubview(view)
+        let parentView = config.view ?? keyWindow()
+        parentView?.addSubview(view)
         view.createView(for: self)
         
         delegate?.willShowToast(self)
